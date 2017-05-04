@@ -13,18 +13,19 @@ MySQL was used to store the data from the database. Due to the use of connection
 requires a resource reference to point to the location of the database, details of the database, and authorization for the database. This 
 can be done like this:
 
-<Resource
-  name="jdbc/db"
-  auth="Container"
-  type="java.sql.DataSource"
-  username={db username}
-  password={db password}
-  driverClassName="com.mysql.jdbc.Driver"
-  maxActive="100" <!-- maxActive and maxIdle values can be altered for lower server load -->
-  maxIdle="30"
-  maxWait="10000"
+<Resource <br><\br>
+  name="jdbc/db"<br><\br>
+  auth="Container"<br><\br>
+  type="java.sql.DataSource"<br><\br>
+  username={db username}<br><\br>
+  password={db password}<br><\br>
+  driverClassName="com.mysql.jdbc.Driver"<br><\br>
+  maxActive="100"<br><\br>
+  maxIdle="30"<br><\br>
+  maxWait="10000"<br><\br>
 />
 
-This is to be used in the context.xml file of a tomcat server.
-the database can be generated with the .sql files located in the GenerateDatabaseSQL folder.
+This is to be used in the context.xml file of a tomcat server and the maxActive/Idle/Wait values can be lowered to reduce the amount of connection in the pool and how long the application waits before closing unneeded connections.
+
+The database can be generated with the .sql files located in the GenerateDatabaseSQL folder.
 
