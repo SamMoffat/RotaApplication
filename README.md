@@ -23,7 +23,7 @@ can be done like this:
   maxActive="100"<br>
   maxIdle="30"<br>
   maxWait="10000"<br>
-\>
+\/\>
 
 This is to be used in the context.xml file of a tomcat server and the maxActive/Idle/Wait values can be lowered to reduce the amount of connection in the pool and how long the application waits before closing unneeded connections.
 
