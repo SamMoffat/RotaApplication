@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="ISO-8859-1">
+		<title>Insert title here</title>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+		<script src="js/keycloak.js"></script>
+	</head>
+	<script type="text/javascript">
+		angular.element(document).ready(() => {
+			window._keycloak = Keycloak({
+		    	  "realm": "CoffeeShopRota",
+		    	  "clientId": "client-frontend",
+		    	  "enable-cors": true
+		    	});
+		    console.log(window._keycloak);
+		    window._keycloak.init({
+		        onLoad: 'login-required'
+		    })
+		    .success((authenticated) => {
+		        if(authenticated) {
+		            window._keycloak.loadUserProfile().success(function(profile){
+		                angular.bootstrap(document, ['CoffeeShopRota']); // manually bootstrap Angular
+		            });
+		        }
+		        else {
+		            window.location.reload();
+		        }
+		    })
+		    .error(function () {
+		    	console.log("OINK");
+		        //window.location.reload();
+		    });
+		});
+	</script>
+	<body>
+		<h1>Hello</h1>
+	</body>
+</html>

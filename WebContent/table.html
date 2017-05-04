@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+</head>
+<body>
+
+	<div ng-app="myApp" ng-controller="tableCtrl">
+
+		<table>
+			
+		</table>
+
+	</div>
+
+	<script>
+		var app = angular.module('myApp', []);
+		app.controller('tableCtrl', function($scope, $http) {
+			$http.get("api/table/GetWeek/dt='2017-04-28'").then(function(response) {
+				$scope.response = response;
+			});
+		});
+	</script>
+	
+</body>
+</html>

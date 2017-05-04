@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="ISO-8859-1">
+		<title>Insert title here</title>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+		<script src="//localhost:8180/auth/js/keycloak.js"></script>
+	</head>
+	<script type="text/javascript">
+		angular.element(document).ready(() => {
+		    window._keycloak = Keycloak('keycloak/keycloak.json');
+		
+		    window._keycloak.init({
+		        onLoad: 'login-required'
+		    })
+		    .success((authenticated) => {
+		        if(authenticated) {
+		            window._keycloak.loadUserProfile().success(function(profile){
+		                angular.bootstrap(document, ['Rota']); // manually bootstrap Angular
+		            });
+		        }
+		        else {
+		            window.location.reload();
+		        }
+		    })
+		    .error(function () {
+		        window.location.reload();
+		    });
+		});
+	</script>
+	<body>
+		<h1>Hello</h1>
+	</body>
+</html>

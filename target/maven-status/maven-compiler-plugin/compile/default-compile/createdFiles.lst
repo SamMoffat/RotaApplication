@@ -1,0 +1,4 @@
+com\sammoffat\servlets\DatabaseConnect.class
+com\sammoffat\servlets\TestServlet.class
+com\sammoffat\gson\Day.class
+com\sammoffat\servlets\GetWeek.class
